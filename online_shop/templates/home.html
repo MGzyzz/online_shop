@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block content %}
+        <h1 class="mb-5 mt-3">My market</h1>
+    <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-3">
+        {% for prt in products %}
+            {% if not prt.remainder <= 1 %}
+        <div class="card mb-3 ms-3" style="max-width: 600px;">
+  <div class="row g-0">
+    <div class="col-md-4">
+        <a href="{% url 'detail-views' id=prt.id %}"><img src="{{prt.img_url}}" class="img-fluid rounded-start" alt="information_image" style="height: 160px; width: 400px; margin-top: 3px"></a>
+    </div>
+    <div class="col-md-8">
+      <div class="card-body text-dark">
+          <h3 class="card-title"> {{prt.title|capfirst}}</h3>
+          <h5>{{ prt.category }}</h5>
+            <h5 class="card-text fs-4 fw-bold">Price: ${{prt.price}}</h5>
+          <a class="btn btn-info text-white" href="{% url 'detail-views' id=prt.id %}">see more</a>
+      </div>
+    </div>
+  </div>
+</div>
+                {% endif %}
+            {% endfor %}
+    </div>
+{% endblock %}
