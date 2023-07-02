@@ -7,7 +7,7 @@ from .forms import ProductForms
 
 
 def home(request):
-    return render(request, 'home.html', context={'products': Product.objects.order_by('category', 'title'), 'form': form})
+    return render(request, 'home.html', context={'products': Product.objects.order_by('category', 'title')})
 
 
 def detail_views_product(request, id):
