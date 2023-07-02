@@ -4,11 +4,12 @@ from django.db import models
 
 
 class Category(models.Model):
+
     name = models.CharField(
         max_length=250,
         null=False,
         blank=False,
-        verbose_name='Name'
+        verbose_name='Name',
     )
 
     def __str__(self):
@@ -29,11 +30,11 @@ class Product(models.Model):
         verbose_name='Description'
     )
     img_url = models.CharField(
-        max_length=5000,
+        max_length=50000,
         verbose_name='Image_url'
     )
 
-    category = models.ForeignKey(Category, on_delete=models.CASCADE)
+    category = models.ForeignKey(Category, on_delete=models.CASCADE, default='Other')
 
     remainder = models.PositiveIntegerField(
         verbose_name='Remainder'
@@ -43,3 +44,6 @@ class Product(models.Model):
         decimal_places=2,
         verbose_name='Price'
     )
+
+    def __str__(self):
+        return self.title
