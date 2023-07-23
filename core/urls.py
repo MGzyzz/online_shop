@@ -21,8 +21,13 @@ from online_shop import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', views.home, name='home'),
-    path('product/<int:id>', views.detail_views_product, name='detail-views'),
-    path('product/add', views.add_product, name='add-product'),
-    path('product/<int:id>/edit', views.edit_product, name='edit-product')
+    path('', views.Home.as_view(), name='home'),
+    path('product/<int:id>', views.Detail.as_view(), name='detail-views'),
+    path('product/add', views.Add.as_view(), name='add-product'),
+    path('product/<int:id>/edit', views.Edit.as_view(), name='edit-product'),
+    path('product/<int:id>/delete', views.Delete.as_view(), name='delete-product'),
+    path('product/<int:id>/add_cart', views.AddCart.as_view(), name='add-to-cart'),
+    path('product/cart', views.ViewsCart.as_view(), name='cart'),
+    path('product/cart/delete/<int:id>', views.DeleteProductCart.as_view(), name='delete-cart'),
+    path('product/cart/add', views.CreateOrder.as_view(), name='create-order')
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
