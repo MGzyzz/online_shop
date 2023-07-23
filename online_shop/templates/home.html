@@ -2,7 +2,9 @@
 
 {% block content %}
         <h1 class="mb-5 mt-3">My market</h1>
-    <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-3">
+    {% include 'partial/search_form.html' %}
+    {% if products %}
+    <div class="row row-cols-1 row-cols-md-2 row-cols-lg-2 g-2">
         {% for prt in products %}
             {% if not prt.remainder <= 1 %}
         <div class="card mb-3 ms-3" style="max-width: 600px;">
@@ -15,7 +17,16 @@
           <h3 class="card-title"> {{prt.title|capfirst}}</h3>
           <h5>{{ prt.category }}</h5>
             <h5 class="card-text fs-4 fw-bold">Price: ${{prt.price}}</h5>
-          <a class="btn btn-info text-white" href="{% url 'detail-views' id=prt.id %}">see more</a>
+          <a class="btn btn-info text-white mb-2" href="{% url 'detail-views' id=prt.id %}">see more</a>
+          <form action="{% url 'add-to-cart' prt.id %}" method="POST">
+              {% csrf_token %}
+              {% if prt.remainder > 0 %}
+                  <input type="number" name="quantity" value="1" min="1" class="mb-3">
+              <button class="btn btn-success mb-2" name="product" value="{{ prt.id }}">Add Cart</button>
+                  {% else %}
+                  <p>Not available</p>
+              {% endif %}
+          </form>
       </div>
     </div>
   </div>
@@ -23,4 +34,10 @@
                 {% endif %}
             {% endfor %}
     </div>
+    {% else %}
+    <h1>Product not found</h1>
+    {% endif %}
+    {% if is_paginated %}
+        {% include 'partial/pagination.html' %}
+    {% endif %}
 {% endblock %}

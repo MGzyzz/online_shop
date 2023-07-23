@@ -2,7 +2,7 @@
 {% block content %}
     {% load static %}
 <hr>
-    <form method="post">
+    <form method="post" action="{% url 'delete-product' product.id %}">
     {% csrf_token %}
     <div class="container">
     <div class="row">
@@ -10,7 +10,7 @@
             <img src="{{ product.img_url }}" alt="image_information" class="img-fluid mb-3" style="height: 200px; width: 250px">
         </div>
         <div class="col-sm-6 pl-sm-0">
-            <h1>Product Title: {{ product.name }}</h1>
+            <h1>Product Title: {{ product.title }}</h1>
             <h5>Category: {{ product.category }}</h5>
             <h3>remainder: {{ product.remainder }}</h3>
             <h3>Price: {{ product.price }}$</h3>
@@ -24,8 +24,10 @@
         </div>
         <div class="btn-group">
                 <a href="{% url 'edit-product' product.id %}" class="btn btn-primary me-3">Edit</a>
-                <button type="submit" class="btn btn-danger" name="id" value="{{ product.id }}" onclick="return confirmDelete()">Delete</button>
-            </div>
+                <button type="submit" class="btn btn-danger" onclick="return confirmDelete()">
+                    Delete
+                </button>
+        </div>
     </div>
     </div>
         </form>

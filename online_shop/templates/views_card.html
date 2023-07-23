@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+{% block content %}
+<h1>Your Cart</h1>
+        <form action="{% url 'create-order' %}" method="post">
+            {% csrf_token %}
+
+   <table class="table text-white">
+
+
+  <thead>
+    <tr class="table-light">
+      <th scope="col">#</th>
+      <th scope="col">Product</th>
+      <th scope="col">Quantity</th>
+      <th scope="col">Price</th>
+      <th scope="col">Total Sum</th>
+        <th scope="col">Actions</th>
+    </tr>
+  </thead>
+          {% for crt in cart %}
+  <tbody>
+    <tr class="table-light">
+      <th scope="row">1</th>
+      <td>{{ crt.product }}</td>
+      <td>{{ crt.quantity }}</td>
+      <td>${{ crt.product.price }}</td>
+        <td>${{ total_sum }}</td>
+        <td>
+            <form method="post" action="{% url 'delete-cart' crt.id %}">
+                {% csrf_token %}
+                <button type="submit" class="btn btn-danger"><i class="bi bi-trash3"></i></button>
+            </form>
+        </td>
+    </tr>
+
+  </tbody>
+      {% endfor %}
+</table>
+    <hr>
+    <h1>Your delivery details</h1>
+    <label for="id_username" class="mb-2">Username:</label>
+    <input type="text" id="id_username" class="form-control" name="username">
+    <label for="id_phone_number" class="mb-2 mt-2">Phone Number:</label>
+    <input type="number" id="id_phone_number" class="form-control" name="number_phone">
+    <label for="id_address" class="mb-2 mt-2">Address:</label>
+    <input type="text" id="id_address" class="form-control" name="address">
+    <button class="btn btn-info text-white mt-5">Make an order</button>
+    </form>
+
+{% endblock %}
