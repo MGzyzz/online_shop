@@ -186,47 +186,6 @@
   }
 },
 {
-  "model": "online_shop.order",
-  "pk": 12,
-  "fields": {
-    "username": "Gzyzz",
-    "number_phone": "1234124312",
-    "address": "sdfgsdfgfsdf",
-    "date_and_creation": "2023-07-24T03:29:08.482Z",
-    "products": [
-      5,
-      16,
-      21
-    ]
-  }
-},
-{
-  "model": "online_shop.order",
-  "pk": 13,
-  "fields": {
-    "username": "asdfsf",
-    "number_phone": "1234124312",
-    "address": "sdfgsdfgfsdf",
-    "date_and_creation": "2023-07-24T04:23:52.737Z",
-    "products": [
-      21
-    ]
-  }
-},
-{
-  "model": "online_shop.order",
-  "pk": 14,
-  "fields": {
-    "username": "asdfasdf",
-    "number_phone": "13242",
-    "address": "asdfas",
-    "date_and_creation": "2023-07-24T04:27:27.665Z",
-    "products": [
-      16
-    ]
-  }
-},
-{
   "model": "auth.user",
   "pk": 1,
   "fields": {
