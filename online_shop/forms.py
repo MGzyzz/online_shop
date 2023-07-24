@@ -34,6 +34,10 @@ class AddToCartForm(forms.ModelForm):
 
 
 class OrderForm(forms.ModelForm):
+    username = forms.CharField(required=True, label='Username')
+    number_phone = forms.CharField(required=True, label='Number Phone')
+    address = forms.CharField(required=True, label='Address')
+
     class Meta:
         model = Order
         fields = ['id', 'username', 'number_phone', 'address']
