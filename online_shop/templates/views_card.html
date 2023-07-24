@@ -37,14 +37,26 @@
       {% endfor %}
 </table>
     <hr>
-    <h1>Your delivery details</h1>
-    <label for="id_username" class="mb-2">Username:</label>
-    <input type="text" id="id_username" class="form-control" name="username">
-    <label for="id_phone_number" class="mb-2 mt-2">Phone Number:</label>
-    <input type="number" id="id_phone_number" class="form-control" name="number_phone">
-    <label for="id_address" class="mb-2 mt-2">Address:</label>
-    <input type="text" id="id_address" class="form-control" name="address">
-    <button class="btn btn-info text-white mt-5">Make an order</button>
+   <h1>Your delivery details</h1>
+          {{ form.non_field_errors }}
+
+<label for="id_username" class="mb-2">{{ order.username.label|capfirst }}:</label>
+{% if order.username.errors %}
+<div class="invalid-feedback">
+    {{ order.username.errors|join:"" }}
+</div>
+{% endif %}
+<input type="text" id="id_username" class="form-control {% if order.username.errors %}is-invalid{% endif %}" name="username" required>
+<label for="id_phone_number" class="mb-2 mt-2">{{ order.number_phone.label|capfirst }}:</label>
+<input type="number" id="id_phone_number" class="form-control {% if order.number_phone.errors %}is invalid{% endif %}" name="number_phone" required>
+        {% if order.number_phone.errors %}
+        <div class="invalid-feedback">
+    {{ order.number_phone.errors|join:"" }}
+</div>
+        {% endif %}
+<label for="id_address" class="mb-2 mt-2">{{ order.address.label|capfirst }}:</label>
+<input type="text" id="id_address" class="form-control" name="address" required>
+<button class="btn btn-info text-white mt-5">Make an order</button>
     </form>
 
 {% endblock %}
