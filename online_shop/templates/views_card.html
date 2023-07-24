@@ -13,18 +13,16 @@
       <th scope="col">Product</th>
       <th scope="col">Quantity</th>
       <th scope="col">Price</th>
-      <th scope="col">Total Sum</th>
         <th scope="col">Actions</th>
     </tr>
   </thead>
           {% for crt in cart %}
   <tbody>
     <tr class="table-light">
-      <th scope="row">1</th>
+      <th scope="row">{{ crt.id }}</th>
       <td>{{ crt.product }}</td>
       <td>{{ crt.quantity }}</td>
       <td>${{ crt.product.price }}</td>
-        <td>${{ total_sum }}</td>
         <td>
             <form method="post" action="{% url 'delete-cart' crt.id %}">
                 {% csrf_token %}
@@ -35,6 +33,10 @@
 
   </tbody>
       {% endfor %}
+   <tr class="table-light">
+       <th>Total sum: </th>
+       <td colspan="5"><b>${{ total_sum }}</b></td>
+   </tr>
 </table>
     <hr>
    <h1>Your delivery details</h1>
