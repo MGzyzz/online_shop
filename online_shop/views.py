@@ -142,6 +142,8 @@ class ViewsCart(ListView):
         context = super().get_context_data(**kwargs)
         cart = ItemInCart.objects.all()
         total_sum = sum(item.product.price * item.quantity for item in cart)
+        context['quantity_sum'] = (item.product.price * item.quantity for item in cart)
+        print(context['quantity_sum'])
         context['total_sum'] = total_sum
         context['order'] = OrderForm
         return context
@@ -167,9 +169,8 @@ class CreateOrder(CreateView):
 
         car_item = ItemInCart.objects.all()
         for item in car_item:
-            order.products.add(item.product)
+            order.products.add(item.product, item.quantity)
         car_item.delete()
-        
         return super().form_valid(form)
 
     def form_invalid(self, form):

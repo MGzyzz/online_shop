@@ -1,10 +1,8 @@
 from django.db import models
-from .product import Product
-from .item_in_cart import ItemInCart
 
 
 class Order(models.Model):
-    products = models.ManyToManyField(Product)
+    products = models.ManyToManyField('online_shop.Product', through='online_shop.ItemInCart')
     username = models.CharField(
         max_length=100,
         null=False,

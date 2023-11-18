@@ -18,10 +18,13 @@ from django.conf.urls.static import static
 from django.contrib import admin
 from django.urls import path
 from online_shop import views
+from accounts.views import views as account_views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.Home.as_view(), name='home'),
+    path('auth/login', account_views.LoginView.as_view(), name='login'),
+    path('auth/logout', account_views.LogoutView.as_view(), name='logout'),
     path('product/<int:id>', views.Detail.as_view(), name='detail-views'),
     path('product/add', views.Add.as_view(), name='add-product'),
     path('product/<int:id>/edit', views.Edit.as_view(), name='edit-product'),
