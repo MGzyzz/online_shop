@@ -143,7 +143,6 @@ class ViewsCart(ListView):
         cart = ItemInCart.objects.all()
         total_sum = sum(item.product.price * item.quantity for item in cart)
         context['quantity_sum'] = (item.product.price * item.quantity for item in cart)
-        print(context['quantity_sum'])
         context['total_sum'] = total_sum
         context['order'] = OrderForm
         return context
