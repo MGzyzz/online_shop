@@ -1,5 +1,41 @@
 [
 {
+  "model": "accounts.user",
+  "pk": 1,
+  "fields": {
+    "password": "pbkdf2_sha256$600000$PvddDdH2ewhxvW9WfHaZpJ$RM7/BooG2SlOYI9BL2THU4IBl7gXaUZ0FwBHTgu3v7s=",
+    "last_login": "2023-11-26T18:37:24.116Z",
+    "is_superuser": true,
+    "username": "admin",
+    "first_name": "",
+    "last_name": "",
+    "email": "",
+    "is_staff": true,
+    "is_active": true,
+    "date_joined": "2023-10-21T19:57:35.827Z",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "accounts.user",
+  "pk": 2,
+  "fields": {
+    "password": "pbkdf2_sha256$600000$KvTU3HCu7kOVjxTgE6dIoM$v+Tqr34AcJRTc8HRKrPvim4uc2vWiUXOZIaX4gG7wXw=",
+    "last_login": "2023-11-26T18:25:23.735Z",
+    "is_superuser": false,
+    "username": "Check_one",
+    "first_name": "Check",
+    "last_name": "Check",
+    "email": "",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2023-11-26T18:25:23.599Z",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
   "model": "online_shop.category",
   "pk": 1,
   "fields": {
@@ -186,21 +222,42 @@
   }
 },
 {
-  "model": "auth.user",
+  "model": "online_shop.itemincart",
+  "pk": 7,
+  "fields": {
+    "product": 1,
+    "quantity": 100,
+    "order": null
+  }
+},
+{
+  "model": "online_shop.order",
   "pk": 1,
   "fields": {
-    "password": "pbkdf2_sha256$600000$EFMlnLxg5V0BPcaJtXKvqU$aDE45Bmjhpebvg3MeyWA2B9rPyTMRdtXQHz/MvtsO48=",
-    "last_login": "2023-06-29T10:37:28.753Z",
-    "is_superuser": true,
-    "username": "admin",
-    "first_name": "",
-    "last_name": "",
-    "email": "",
-    "is_staff": true,
-    "is_active": true,
-    "date_joined": "2023-06-29T10:37:11.443Z",
-    "groups": [],
-    "user_permissions": []
+    "username": "Gzyzz",
+    "number_phone": "1234124312",
+    "address": "sdfgsdfgfsdf",
+    "date_and_creation": "2023-07-24T11:15:56.588Z"
+  }
+},
+{
+  "model": "online_shop.order",
+  "pk": 2,
+  "fields": {
+    "username": "Gzyzz",
+    "number_phone": "1234124312",
+    "address": "sdfgsdfgfsdf",
+    "date_and_creation": "2023-07-24T11:17:14.515Z"
+  }
+},
+{
+  "model": "online_shop.order",
+  "pk": 3,
+  "fields": {
+    "username": "sadfads",
+    "number_phone": "14231",
+    "address": "afasfs",
+    "date_and_creation": "2023-07-24T11:22:56.779Z"
   }
 }
 ]
