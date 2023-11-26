@@ -16,21 +16,13 @@ Including another URLconf
 from django.conf import settings
 from django.conf.urls.static import static
 from django.contrib import admin
-from django.urls import path
+from django.urls import path, include
 from online_shop import views
 from accounts.views import views as account_views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.Home.as_view(), name='home'),
-    path('auth/login', account_views.LoginView.as_view(), name='login'),
-    path('auth/logout', account_views.LogoutView.as_view(), name='logout'),
-    path('product/<int:id>', views.Detail.as_view(), name='detail-views'),
-    path('product/add', views.Add.as_view(), name='add-product'),
-    path('product/<int:id>/edit', views.Edit.as_view(), name='edit-product'),
-    path('product/<int:id>/delete', views.Delete.as_view(), name='delete-product'),
-    path('product/<int:id>/add_cart', views.AddCart.as_view(), name='add-to-cart'),
-    path('product/cart', views.ViewsCart.as_view(), name='cart'),
-    path('product/cart/delete/<int:id>', views.DeleteProductCart.as_view(), name='delete-cart'),
-    path('product/cart/add', views.CreateOrder.as_view(), name='create-order')
+    path('auth/', include('accounts.urls')),
+    path('product/', include('online_shop.urls')),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
